@@ -1,0 +1,20 @@
+{
+  "name": "back-end-test-augen",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/julio-souza3g/back-end-test-augen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/julio-souza3g/back-end-test-augen/issues"
+  },
+  "homepage": "https://github.com/julio-souza3g/back-end-test-augen#readme"
+}
