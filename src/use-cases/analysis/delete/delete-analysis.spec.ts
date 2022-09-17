@@ -33,7 +33,8 @@ describe('DeleteAnalysis', () => {
       phLevel: 7.5,
       chlorineLevel: 0.5,
       fluorideLevel: 0.5,
-      flowRate: 0.5
+      flowRate: 0.5,
+      equipmentId: 'any_id'
     })
     await sut.execute(analysis.id)
     await expect(getAnalysisById.execute(analysis.id)).rejects.toThrow()

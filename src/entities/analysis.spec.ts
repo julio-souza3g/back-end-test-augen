@@ -6,7 +6,8 @@ describe('Analysis', () => {
       phLevel: 7.5,
       chlorineLevel: 0.5,
       fluorideLevel: 0.5,
-      flowRate: 0.5
+      flowRate: 0.5,
+      equipmentId: 'any_id'
     })
 
     expect(analysis).toBeInstanceOf(Analysis)
@@ -19,7 +20,8 @@ describe('Analysis', () => {
         phLevel: 7.5,
         chlorineLevel: 0.5,
         fluorideLevel: 0.5,
-        flowRate: 0
+        flowRate: 0,
+        equipmentId: 'any_id'
       })
     }).toThrow()
   })
@@ -30,7 +32,8 @@ describe('Analysis', () => {
         phLevel: 7.5,
         chlorineLevel: 101,
         fluorideLevel: 0.5,
-        flowRate: 0.5
+        flowRate: 0.5,
+        equipmentId: 'any_id'
       })
     }).toThrow()
   })
@@ -41,7 +44,8 @@ describe('Analysis', () => {
         phLevel: 7.5,
         chlorineLevel: 0.5,
         fluorideLevel: 101,
-        flowRate: 0.5
+        flowRate: 0.5,
+        equipmentId: 'any_id'
       })
     }).toThrow()
   })

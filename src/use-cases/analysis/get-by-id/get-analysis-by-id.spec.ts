@@ -25,7 +25,8 @@ describe('GetAnalysisById', () => {
       phLevel: 7.5,
       chlorineLevel: 0.5,
       fluorideLevel: 0.5,
-      flowRate: 0.5
+      flowRate: 0.5,
+      equipmentId: 'any_id'
     })
     const analysisById = await sut.execute(analysis.id)
     expect(analysisById).toBeInstanceOf(Analysis)

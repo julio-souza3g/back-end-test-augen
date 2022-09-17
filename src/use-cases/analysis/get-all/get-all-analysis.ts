@@ -1,9 +1,9 @@
 import { Analysis } from '../../../entities/analysis'
-import { AnalysisRepository } from '../../../repositories/analysis-repository'
+import { IAnalysisRepository } from '../../../repositories/analysis-repository-protocols'
 
 export class GetAllAnalysis {
   constructor (
-    private readonly analysisRepository: AnalysisRepository
+    private readonly analysisRepository: IAnalysisRepository
   ) {}
 
   async execute (): Promise<Analysis[]> {

@@ -1,11 +1,12 @@
 import { Analysis } from '../../entities/analysis'
-import { AnalysisRepository } from '../analysis-repository'
+import { IAnalysisRepository } from '../analysis-repository-protocols'
 
-export class InMemoryAnalysisRepository implements AnalysisRepository {
+export class InMemoryAnalysisRepository implements IAnalysisRepository {
   private readonly analyses: Analysis[] = []
 
-  async create (analysis: Analysis): Promise<void> {
+  async create (analysis: Analysis): Promise<Analysis> {
     this.analyses.push(analysis)
+    return analysis
   }
 
   async findAll (): Promise<Analysis[]> {
@@ -17,9 +18,9 @@ export class InMemoryAnalysisRepository implements AnalysisRepository {
     return (analysis != null) ? analysis : null
   }
 
-  async findByDate (date: Date): Promise<Analysis | null> {
-    const analysis = this.analyses.find(analysis => analysis.createdAt === date)
-    return (analysis != null) ? analysis : null
+  async findByDate (date: Date): Promise<Analysis[]> {
+    const analyses = this.analyses.filter(analysis => analysis.createdAt === date)
+    return analyses
   }
 
   async delete (id: string): Promise<void> {

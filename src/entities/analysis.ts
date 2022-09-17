@@ -5,6 +5,7 @@ interface AnalysisProps {
   chlorineLevel: number
   fluorideLevel: number
   flowRate: number
+  equipmentId: string
 }
 
 export class Analysis {
@@ -17,6 +18,8 @@ export class Analysis {
   fluorideLevel: number
 
   flowRate: number
+
+  equipmentId: string
 
   createdAt: Date
 
@@ -33,6 +36,7 @@ export class Analysis {
     this.chlorineLevel = props.chlorineLevel
     this.fluorideLevel = props.fluorideLevel
     this.flowRate = props.flowRate
+    this.equipmentId = props.equipmentId
     this.createdAt = new Date()
   }
 }

@@ -20,7 +20,7 @@ const makeSut = (): SutTypes => {
 describe('GetAnalysisByDate', () => {
   it('should throw if analysis does not exist', async () => {
     const { sut } = makeSut()
-    await expect(sut.execute(new Date())).rejects.toThrow('Analysis not found')
+    await expect(sut.execute(new Date())).rejects.toThrow('Analyses not found')
   })
 
   it('should be able get analysis by date', async () => {
@@ -29,9 +29,10 @@ describe('GetAnalysisByDate', () => {
       phLevel: 7.5,
       chlorineLevel: 0.5,
       fluorideLevel: 0.5,
-      flowRate: 0.5
+      flowRate: 0.5,
+      equipmentId: 'any_id'
     })
     const result = await sut.execute(analysis.createdAt)
-    expect(result).toEqual(analysis)
+    expect(result[0].id).toBeTruthy()
   })
 })
