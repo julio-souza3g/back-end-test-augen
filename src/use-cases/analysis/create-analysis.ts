@@ -1,4 +1,5 @@
 import { Analysis } from '../../entities/analysis'
+import { AnalysisRepository } from '../../repositories/analysis-repository'
 
 interface CreateAnalysisRequest {
   phLevel: number
@@ -9,6 +10,10 @@ interface CreateAnalysisRequest {
 type CreateAnalysisResponse = Analysis
 
 export class CreateAnalysis {
+  constructor (
+    private readonly analysisRepository: AnalysisRepository
+  ) {}
+
   async execute ({
     phLevel,
     chlorineLevel,
@@ -16,6 +21,7 @@ export class CreateAnalysis {
     flowRate
   }: CreateAnalysisRequest): Promise<CreateAnalysisResponse> {
     const analysis = new Analysis({ phLevel, chlorineLevel, fluorideLevel, flowRate })
+    await this.analysisRepository.create(analysis)
     return analysis
   }
 }
