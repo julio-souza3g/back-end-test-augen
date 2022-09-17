@@ -1,5 +1,5 @@
-import { Analysis } from '../../entities/analysis'
-import { AnalysisRepository } from '../../repositories/analysis-repository'
+import { Analysis } from '../../../entities/analysis'
+import { AnalysisRepository } from '../../../repositories/analysis-repository'
 
 interface CreateAnalysisRequest {
   phLevel: number
