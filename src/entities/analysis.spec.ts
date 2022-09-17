@@ -1,6 +1,6 @@
 import { Analysis } from './analysis'
 
-describe('Create an analysis', () => {
+describe('Analysis', () => {
   it('should be able create an analysis', () => {
     const analysis = new Analysis({
       phLevel: 7.5,
