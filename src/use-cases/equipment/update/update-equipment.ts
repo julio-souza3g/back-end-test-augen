@@ -1,3 +1,4 @@
+import { inject, injectable } from 'tsyringe'
 import { Equipment } from '../../../entities/equipment'
 import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
 
@@ -8,8 +9,12 @@ interface UpdateEquipmentRequest {
 
 type UpdateEquipmentResponse = Equipment
 
+@injectable()
 export class UpdateEquipment {
-  constructor (private readonly equipmentRepository: IEquipmentRepository) {}
+  constructor (
+    @inject('EquipmentRepository')
+    private readonly equipmentRepository: IEquipmentRepository
+  ) {}
 
   async execute (
     id: string,

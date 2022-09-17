@@ -1,5 +1,6 @@
 import { Equipment } from '../../../entities/equipment'
 import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
+import { inject, injectable } from 'tsyringe'
 
 interface CreateEquipmentRequest {
   name: string
@@ -9,8 +10,10 @@ interface CreateEquipmentRequest {
 
 type CreateEquipmentResponse = Equipment
 
+@injectable()
 export class CreateEquipment {
   constructor (
+    @inject('EquipmentRepository')
     private readonly equipmentRepository: IEquipmentRepository
   ) {}
 
