@@ -1,8 +1,50 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
+  shadowDatabaseUrl    = env("SHADOW_DATABASE_URL")
+  referentialIntegrity = "prisma"
+}
+
+model Analysis {
+  id            String    @id @default(uuid())
+  phLevel       Int
+  chlorineLevel Float
+  fluorideLevel Float
+  flowRate      Float
+  equipmentId   String
+  equipment     Equipment @relation(fields: [equipmentId], references: [id])
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@map("analysis")
+}
+
+model Equipment {
+  id          String     @id @default(uuid())
+  name        String
+  description String
+  cityId      String
+  city        City       @relation(fields: [cityId], references: [id])
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  Analysis    Analysis[]
+
+  @@map("equipment")
+}
+
+model City {
+  id        String      @id @default(uuid())
+  name      String
+  uf        String
+  region    String
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Equipment Equipment[]
+
+  @@map("city")
 }
