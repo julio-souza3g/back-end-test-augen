@@ -1,11 +1,12 @@
 import { Equipment } from '../../entities/equipment'
-import { EquipmentRepository } from '../equipment-repository'
+import { IEquipmentRepository } from '../equipment-repository-protocols'
 
-export class InMemoryEquipmentRepository implements EquipmentRepository {
+export class InMemoryEquipmentRepository implements IEquipmentRepository {
   private readonly equipments: Equipment[] = []
 
-  async create (equipment: Equipment): Promise<void> {
+  async create (equipment: Equipment): Promise<Equipment> {
     this.equipments.push(equipment)
+    return equipment
   }
 
   async findAll (): Promise<Equipment[]> {

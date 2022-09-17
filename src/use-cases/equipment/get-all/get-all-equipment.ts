@@ -1,8 +1,8 @@
 import { Equipment } from '../../../entities/equipment'
-import { EquipmentRepository } from '../../../repositories/equipment-repository'
+import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
 
 export class GetAllEquipment {
-  constructor (private readonly equipmentRepository: EquipmentRepository) {}
+  constructor (private readonly equipmentRepository: IEquipmentRepository) {}
 
   async execute (): Promise<Equipment[]> {
     return await this.equipmentRepository.findAll()

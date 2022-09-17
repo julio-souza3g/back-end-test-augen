@@ -1,7 +1,7 @@
-import { EquipmentRepository } from '../../../repositories/equipment-repository'
+import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
 
 export class DeleteEquipment {
-  constructor (private readonly equipmentRepository: EquipmentRepository) {}
+  constructor (private readonly equipmentRepository: IEquipmentRepository) {}
 
   async execute (id: string): Promise<void> {
     const equipment = await this.equipmentRepository.findById(id)

@@ -1,8 +1,8 @@
 import { Equipment } from '../../../entities/equipment'
-import { EquipmentRepository } from '../../../repositories/equipment-repository'
+import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
 
 export class GetEquipmentById {
-  constructor (private readonly equipmentRepository: EquipmentRepository) {}
+  constructor (private readonly equipmentRepository: IEquipmentRepository) {}
 
   async execute (id: string): Promise<Equipment> {
     const equipment = await this.equipmentRepository.findById(id)

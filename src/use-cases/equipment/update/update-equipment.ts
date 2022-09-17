@@ -1,5 +1,5 @@
 import { Equipment } from '../../../entities/equipment'
-import { EquipmentRepository } from '../../../repositories/equipment-repository'
+import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
 
 interface UpdateEquipmentRequest {
   name: string
@@ -9,7 +9,7 @@ interface UpdateEquipmentRequest {
 type UpdateEquipmentResponse = Equipment
 
 export class UpdateEquipment {
-  constructor (private readonly equipmentRepository: EquipmentRepository) {}
+  constructor (private readonly equipmentRepository: IEquipmentRepository) {}
 
   async execute (
     id: string,
