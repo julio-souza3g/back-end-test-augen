@@ -1,4 +1,6 @@
-export interface AnalysisProps {
+import { v4 as uuidV4 } from 'uuid'
+
+interface AnalysisProps {
   phLevel: number
   chlorineLevel: number
   fluorideLevel: number
@@ -6,23 +8,17 @@ export interface AnalysisProps {
 }
 
 export class Analysis {
-  private readonly props: AnalysisProps
+  id: string
 
-  get phLevel (): number {
-    return this.props.phLevel
-  }
+  phLevel: number
 
-  get chlorineLevel (): number {
-    return this.props.chlorineLevel
-  }
+  chlorineLevel: number
 
-  get fluorideLevel (): number {
-    return this.props.fluorideLevel
-  }
+  fluorideLevel: number
 
-  get flowRate (): number {
-    return this.props.flowRate
-  }
+  flowRate: number
+
+  createdAt: Date
 
   constructor (props: AnalysisProps) {
     const { flowRate, chlorineLevel, fluorideLevel } = props
@@ -32,6 +28,11 @@ export class Analysis {
     if (chlorineLevel > 100 || fluorideLevel > 100) {
       throw new Error('Chlorine or fluoride levels cannot be greater than 100')
     }
-    this.props = props
+    this.id = uuidV4()
+    this.phLevel = props.phLevel
+    this.chlorineLevel = props.chlorineLevel
+    this.fluorideLevel = props.fluorideLevel
+    this.flowRate = props.flowRate
+    this.createdAt = new Date()
   }
 }
