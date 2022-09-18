@@ -2,7 +2,8 @@ import { v4 as uuidV4 } from 'uuid'
 
 interface CityProps {
   name: string
-  state: string
+  ibgeCode: number
+  uf: string
   region: string
 }
 
@@ -11,7 +12,9 @@ export class City {
 
   name: string
 
-  state: string
+  ibgeCode: number
+
+  uf: string
 
   region: string
 
@@ -20,7 +23,8 @@ export class City {
   constructor (props: CityProps) {
     this.id = uuidV4()
     this.name = props.name
-    this.state = props.state
+    this.ibgeCode = props.ibgeCode
+    this.uf = props.uf
     this.region = props.region
     this.createdAt = new Date()
   }
