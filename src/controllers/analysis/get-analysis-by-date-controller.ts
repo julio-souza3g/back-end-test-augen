@@ -6,7 +6,7 @@ export class GetAnalysisByDateController {
   async handle (request: Request, response: Response): Promise<Response> {
     const { date } = request.params
     const getAnalysisByDate = container.resolve(GetAnalysisByDate)
-    const analysis = await getAnalysisByDate.execute(new Date(date))
+    const analysis = await getAnalysisByDate.execute(date)
     return response.status(200).json(analysis)
   }
 }

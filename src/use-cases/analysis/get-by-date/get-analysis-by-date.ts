@@ -10,8 +10,8 @@ export class GetAnalysisByDate {
     private readonly analysisRepository: IAnalysisRepository
   ) {}
 
-  async execute (date: Date): Promise<Analysis[]> {
-    const analyses = await this.analysisRepository.findByDate(date)
+  async execute (date: string): Promise<Analysis[]> {
+    const analyses = await this.analysisRepository.findByDate(new Date(date))
     if (analyses?.length === 0) {
       throw new Error('Analyses not found')
     }

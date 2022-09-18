@@ -1,5 +1,6 @@
 import { Analysis } from '../../entities/analysis'
 import { IAnalysisRepository } from '../analysis-repository-protocols'
+import { isEqual } from 'date-fns'
 
 export class InMemoryAnalysisRepository implements IAnalysisRepository {
   private readonly analyses: Analysis[] = []
@@ -14,12 +15,14 @@ export class InMemoryAnalysisRepository implements IAnalysisRepository {
   }
 
   async findById (id: string): Promise<Analysis | null> {
-    const analysis = this.analyses.find(analysis => analysis.id === id)
-    return (analysis != null) ? analysis : null
+    const analysis = this.analyses.find((analysis) => analysis.id === id)
+    return analysis != null ? analysis : null
   }
 
   async findByDate (date: Date): Promise<Analysis[]> {
-    const analyses = this.analyses.filter(analysis => analysis.createdAt === date)
+    const analyses = this.analyses.filter((analysis) =>
+      isEqual(analysis.createdAt, date)
+    )
     return analyses
   }
 
