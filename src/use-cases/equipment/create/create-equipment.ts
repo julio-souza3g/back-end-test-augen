@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { Equipment } from '../../../entities/equipment'
 import { IEquipmentRepository } from '../../../repositories/equipment-repository-protocols'
 import { inject, injectable } from 'tsyringe'

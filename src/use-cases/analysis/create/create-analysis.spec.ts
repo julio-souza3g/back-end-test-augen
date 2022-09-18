@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { Analysis } from '../../../entities/analysis'
 import { InMemoryAnalysisRepository } from '../../../repositories/in-memory/in-memory-analysis-repository'
 import { CreateAnalysis } from './create-analysis'

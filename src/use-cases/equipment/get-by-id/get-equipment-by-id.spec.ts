@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { InMemoryEquipmentRepository } from '../../../repositories/in-memory/in-memory-equipment-repository'
 import { CreateEquipment } from '../create/create-equipment'
 import { GetEquipmentById } from './get-equipment-by-id'

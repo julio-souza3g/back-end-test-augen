@@ -1,3 +1,4 @@
+import 'reflect-metadata'
 import { inject, injectable } from 'tsyringe'
 import { Analysis } from '../../../entities/analysis'
 import { IAnalysisRepository } from '../../../repositories/analysis-repository-protocols'
