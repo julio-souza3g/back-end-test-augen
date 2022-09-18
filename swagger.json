@@ -1,0 +1,590 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Augen Test API",
+    "description": "This is an API for backend test Augen Engenharia",
+    "version": "1.0.0",
+    "contact": {
+      "email": "juliosouza.rs@gmail.com"
+    }
+  },
+  "paths": {
+    "/analysis": {
+      "post": {
+        "tags": [
+          "Analysis"
+        ],
+        "summary": "Create a analysis",
+        "description": "Create a new analysis",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phLevel": {
+                    "type": "integer"
+                  },
+                  "chlorineLevel": {
+                    "type": "number"
+                  },
+                  "fluorideLevel": {
+                    "type": "number"
+                  },
+                  "flowRate": {
+                    "type": "number"
+                  },
+                  "equipmentId": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "phLevel": 7,
+                  "chlorineLevel": 0.5,
+                  "fluorideLevel": 0.5,
+                  "flowRate": 0.5,
+                  "equipmentId": "5f9f1b9b0b9c1c0017b5b1b1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Invalid values provided"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Analysis"
+        ],
+        "summary": "List all analysis",
+        "description": "List all analysis",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "phLevel": {
+                        "type": "integer"
+                      },
+                      "chlorineLevel": {
+                        "type": "number"
+                      },
+                      "fluorideLevel": {
+                        "type": "number"
+                      },
+                      "flowRate": {
+                        "type": "number"
+                      },
+                      "equipmentId": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "date-time"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analysis/{id}": {
+      "delete": {
+        "tags": [
+          "Analysis"
+        ],
+        "summary": "Delete a analysis",
+        "description": "Delete a analysis",
+        "parameters": [
+          {
+            "name": "id_analysis",
+            "in": "path",
+            "description": "The ID to delete a specific analysis",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Analysis not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Analysis"
+        ],
+        "summary": "List a specific analysis",
+        "description": "List a specific analysis",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "phLevel": {
+                      "type": "integer"
+                    },
+                    "chlorineLevel": {
+                      "type": "number"
+                    },
+                    "fluorideLevel": {
+                      "type": "number"
+                    },
+                    "flowRate": {
+                      "type": "number"
+                    },
+                    "equipmentId": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/analysis/search-by-date": {
+      "get": {
+        "tags": [
+          "Analysis"
+        ],
+        "summary": "List all analysis by date",
+        "description": "List all analysis by date",
+        "parameters": [
+          {
+            "name": "date",
+            "in": "query",
+            "description": "The date to search a specific analysis",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "phLevel": {
+                        "type": "integer"
+                      },
+                      "chlorineLevel": {
+                        "type": "number"
+                      },
+                      "fluorideLevel": {
+                        "type": "number"
+                      },
+                      "flowRate": {
+                        "type": "number"
+                      },
+                      "equipmentId": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "date-time"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipment": {
+      "post": {
+        "tags": [
+          "Equipments"
+        ],
+        "summary": "Create a equipment",
+        "description": "Create a new equipment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type":"string"
+                  },
+                  "description": {
+                    "type":"string"
+                  },
+                  "cityId": {
+                    "type":"string"
+                  }
+                },
+                "example": {
+                  "name": "Piscina 1",
+                  "description": "Piscina 1",
+                  "cityId": "5f9f1b9b"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "summary": "List all equipments",
+        "description": "List all equipments",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "cityId": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "date-time"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/equipment/{id}": {
+      "delete": {
+        "tags": [
+          "Equipments"
+        ],
+        "summary": "Delete a equipment",
+        "description": "Delete a equipment",
+        "parameters": [
+          {
+            "name": "id_equipment",
+            "in": "path",
+            "description": "The ID to delete a specific equipment",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Equipment not found"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "summary": "List a specific equipment",
+        "description": "List a specific equipment",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "cityId": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "date-time"
+                    },
+                    "updated_at": {
+                      "type": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Equipments"
+        ],
+        "summary": "Update a equipment",
+        "description": "Update a new equipment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type":"string"
+                  },
+                  "description": {
+                    "type":"string"
+                  }
+                },
+                "example": {
+                  "name": "Piscina 1",
+                  "description": "Piscina 1"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated"
+          }
+        }
+      }
+    },
+    "/city": {
+      "post": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Create a city",
+        "description": "Create a new city",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type":"string"
+                  },
+                  "ibgeCode": {
+                    "type":"integer"
+                  },
+                  "uf": {
+                    "type":"string"
+                  },
+                  "region": {
+                    "type":"string"
+                  }
+                },
+                "example": {
+                  "name": "São Paulo",
+                  "ibgeCode": 3550308,
+                  "uf": "SP",
+                  "region": "Sudeste"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "List all cities",
+        "description": "List all cities",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "ibgeCode": {
+                        "type": "integer"
+                      },
+                      "uf": {
+                        "type": "string"
+                      },
+                      "region": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "date-time"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/city/{id}": {
+      "delete": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Delete a city",
+        "description": "Delete a city",
+        "parameters": [
+          {
+            "name": "id_city",
+            "in": "path",
+            "description": "The ID to delete a specific city",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "City not found"
+          }
+        }
+      }
+    },
+    "/city/search-by-name": {
+      "get": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "List all analysis by name",
+        "description": "List all analysis by name",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "The name to search a specific city",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "ibgeCode": {
+                        "type": "integer"
+                      },
+                      "uf": {
+                        "type": "string"
+                      },
+                      "region": {
+                        "type": "string"
+                      },
+                      "created_at": {
+                        "type": "date-time"
+                      },
+                      "updated_at": {
+                        "type": "date-time"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
