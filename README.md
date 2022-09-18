@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="AugenEngenharia" title="AugenEngenharia" src=".github/logo.png" width="200px" height="200px"/>  
+  <img alt="AugenEngenharia" title="AugenEngenharia" src=".github/logo.png" width="163px" height="43px"/>  
 </h1>
 
 <p align="center">
@@ -30,6 +30,7 @@ Equipamentos espalhados por cidades do Brasil fazem análises da água de poços
 - Clone o repositório
 - Instale as dependências com `npm install`
 - Inicie o container do banco de dados MySQL com `docker-compose up`
+- Rodar as migrations do prisma no banco de dados com `npx prisma migrate dev`
 - Inicie o servidor com `npm run dev`
 - Para rodar os testes unitários, use `npm test`
 
