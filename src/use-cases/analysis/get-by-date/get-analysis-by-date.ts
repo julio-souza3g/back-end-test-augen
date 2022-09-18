@@ -1,8 +1,13 @@
+import { inject, injectable } from 'tsyringe'
 import { Analysis } from '../../../entities/analysis'
 import { IAnalysisRepository } from '../../../repositories/analysis-repository-protocols'
 
+@injectable()
 export class GetAnalysisByDate {
-  constructor (private readonly analysisRepository: IAnalysisRepository) {}
+  constructor (
+    @inject('AnalysisRepository')
+    private readonly analysisRepository: IAnalysisRepository
+  ) {}
 
   async execute (date: Date): Promise<Analysis[]> {
     const analyses = await this.analysisRepository.findByDate(date)

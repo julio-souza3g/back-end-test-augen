@@ -4,6 +4,7 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-misused-promises": "off"
   }
 }
