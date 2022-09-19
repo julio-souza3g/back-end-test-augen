@@ -34,9 +34,14 @@ export class AnalysisRepository implements IAnalysisRepository {
     return analysis
   }
 
-  async findByDate (date: Date): Promise<Analysis[]> {
+  async findByDate (from: Date, to: Date): Promise<Analysis[]> {
     const analyses = await prisma.analysis.findMany({
-      where: { createdAt: date }
+      where: {
+        createdAt: {
+          gte: from,
+          lte: to
+        }
+      }
     })
     return analyses
   }

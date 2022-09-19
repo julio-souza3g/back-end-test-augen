@@ -4,9 +4,13 @@ import { CreateEquipment } from '../../use-cases/equipment/create/create-equipme
 
 export class CreateEquipmentController {
   async handle (request: Request, response: Response): Promise<Response> {
-    const { name, description, cityId } = request.body
-    const createEquipment = container.resolve(CreateEquipment)
-    const result = await createEquipment.execute({ name, description, cityId })
-    return response.status(201).json(result)
+    try {
+      const { name, description, cityId } = request.body
+      const createEquipment = container.resolve(CreateEquipment)
+      const result = await createEquipment.execute({ name, description, cityId })
+      return response.status(201).json(result)
+    } catch (error) {
+      return response.status(400).json({ error: error.message })
+    }
   }
 }

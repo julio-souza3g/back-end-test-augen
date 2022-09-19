@@ -4,6 +4,6 @@ export interface IAnalysisRepository {
   create: (analysis: Analysis) => Promise<Analysis>
   findAll: () => Promise<Analysis[]>
   findById: (id: string) => Promise<Analysis | null>
-  findByDate: (date: Date) => Promise<Analysis[]>
+  findByDate: (from: Date, to: Date) => Promise<Analysis[]>
   delete: (id: string) => Promise<void>
 }

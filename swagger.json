@@ -179,21 +179,33 @@
       }
     },
     "/analysis/search-by-date": {
-      "get": {
+      "post": {
         "tags": [
           "Analysis"
         ],
         "summary": "List all analysis by date",
         "description": "List all analysis by date",
-        "parameters": [
-          {
-            "name": "date",
-            "in": "query",
-            "description": "The date to search a specific analysis",
-            "type": "string",
-            "required": true
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "startDate": {
+                    "type": "string"
+                  },
+                  "endDate": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "startDate": "2022-09-18",
+                  "endDate": "2022-09-19"
+                }
+              }
+            }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "Success",

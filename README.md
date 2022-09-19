@@ -33,6 +33,8 @@ Equipamentos espalhados por cidades do Brasil fazem análises da água de poços
 - Rodar as migrations do prisma no banco de dados com `npx prisma migrate dev`
 - Inicie o servidor com `npm run dev`
 - Para rodar os testes unitários, use `npm test`
+- Se preferir, para visualização do banco de dados (registros e relacionamentos) de maneira bem fácil, você pode
+rodar no terminal `npx prisma studio`
 
 Agora você pode acessar [`localhost:5050/api-docs`](http://localhost:5050/api-docs) do seu navegador para ter acesso a documentação da API.
 

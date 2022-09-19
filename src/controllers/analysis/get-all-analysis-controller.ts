@@ -4,8 +4,12 @@ import { GetAllAnalysis } from '../../use-cases/analysis/get-all/get-all-analysi
 
 export class GetAllAnalysisController {
   async handle (request: Request, response: Response): Promise<Response> {
-    const getAllAnalysis = container.resolve(GetAllAnalysis)
-    const analysis = await getAllAnalysis.execute()
-    return response.status(200).json(analysis)
+    try {
+      const getAllAnalysis = container.resolve(GetAllAnalysis)
+      const analysis = await getAllAnalysis.execute()
+      return response.status(200).json(analysis)
+    } catch (error) {
+      return response.status(400).json({ error: error.message })
+    }
   }
 }

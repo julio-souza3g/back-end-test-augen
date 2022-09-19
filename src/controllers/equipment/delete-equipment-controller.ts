@@ -4,9 +4,13 @@ import { DeleteEquipment } from '../../use-cases/equipment/delete/delete-equipme
 
 export class DeleteEquipmentController {
   async handle (request: Request, response: Response): Promise<Response> {
-    const { id } = request.params
-    const deleteEquipment = container.resolve(DeleteEquipment)
-    await deleteEquipment.execute(id)
-    return response.status(204).send()
+    try {
+      const { id } = request.params
+      const deleteEquipment = container.resolve(DeleteEquipment)
+      await deleteEquipment.execute(id)
+      return response.status(204).send()
+    } catch (error) {
+      return response.status(400).json({ error: error.message })
+    }
   }
 }

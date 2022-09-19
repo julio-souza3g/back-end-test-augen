@@ -15,7 +15,7 @@ const deleteAnalysisController = new DeleteAnalysisController()
 
 analysisRoutes.get('/', getAllAnalysisController.handle)
 analysisRoutes.get('/:id', getAnalysisByIdController.handle)
-analysisRoutes.get('/search-by-date', getAnalysisByDateController.handle)
+analysisRoutes.post('/search-by-date', getAnalysisByDateController.handle)
 analysisRoutes.post('/', createAnalysisController.handle)
 analysisRoutes.delete('/:id', deleteAnalysisController.handle)
 
