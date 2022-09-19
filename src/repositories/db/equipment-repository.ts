@@ -6,9 +6,15 @@ export class EquipmentRepository implements IEquipmentRepository {
   async create (equipment: Equipment): Promise<Equipment> {
     const newEquipment = await prisma.equipment.create({
       data: {
+        id: equipment.id,
         name: equipment.name,
         description: equipment.description,
-        cityId: equipment.cityId
+        city: {
+          connect: {
+            id: equipment.cityId
+          }
+        },
+        createdAt: equipment.createdAt
       }
     })
     return newEquipment

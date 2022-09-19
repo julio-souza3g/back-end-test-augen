@@ -6,10 +6,12 @@ export class CityRepository implements ICityRepository {
   async create (city: City): Promise<City> {
     const newCity = await prisma.city.create({
       data: {
+        id: city.id,
         name: city.name,
         ibgeCode: city.ibgeCode,
         uf: city.uf,
-        region: city.region
+        region: city.region,
+        createdAt: city.createdAt
       }
     })
     return newCity

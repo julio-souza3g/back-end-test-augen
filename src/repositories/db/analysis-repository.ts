@@ -6,11 +6,17 @@ export class AnalysisRepository implements IAnalysisRepository {
   async create (analysis: Analysis): Promise<Analysis> {
     const newAnalysis = await prisma.analysis.create({
       data: {
+        id: analysis.id,
         phLevel: analysis.phLevel,
         chlorineLevel: analysis.chlorineLevel,
         fluorideLevel: analysis.fluorideLevel,
         flowRate: analysis.flowRate,
-        equipmentId: analysis.equipmentId
+        createdAt: analysis.createdAt,
+        equipment: {
+          connect: {
+            id: analysis.equipmentId
+          }
+        }
       }
     })
     return newAnalysis
